@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grand Finale 🤣💖</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* Confetti para o finale */
+    .confetti-piece {
+      position: fixed;
+      top: -20px;
+      font-size: 1.3rem;
+      animation: confettiFall linear forwards;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    @keyframes confettiFall {
+      0%   { transform: translateY(0) rotate(0deg);    opacity: 1; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+
+    .finale-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+      color: #880e4f;
+      text-align: center;
+      line-height: 1.8;
+      font-style: italic;
+      max-width: 480px;
+      padding: 0.5rem 1rem;
+    }
+
+    /* Caixa especial ajustada para conter a foto estruturada */
+    .finale-card {
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,182,204,0.5);
+      border-radius: 26px;
+      padding: 2.4rem 2rem;
+      text-align: center;
+      max-width: 440px;
+      width: 100%;
+      box-shadow:
+        0 8px 32px rgba(255,100,150,0.2),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    /* Força o bloco da foto a respeitar o tamanho na estrutura flex */
+    .finale-card .photo-frame {
+      flex-shrink: 0;
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body class="story-page">
+
+  <div class="floating-hearts" id="floatingHearts"></div>
+
+  <main class="story-container">
+
+    <div class="page-indicator">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot active"></div>
+    </div>
+
+    <p class="phrase-top">Juntando cada pedacinho seu, o resultado é perfeito.</p>
+
+    <button class="btn-reveal" id="btnReveal" onclick="reveal()" title="Clique para revelar">
+      💙
+    </button>
+
+    <div class="reveal-area" id="revealArea">
+      <div class="finale-card">
+        
+        <div class="photo-frame">
+          <img src="PastaA/Foto6.jpg" alt="Foto final especial" />
+        </div>
+
+        <div class="finale-heart">💖</div>
+        <p class="finale-text">
+          Eu amo cada detalhe em você.<br/>
+          E adoro como somos nós.<br/><br/>
+          <strong>Obrigado por ser o amor da minha vida!</strong>
+        </p>
+      </div>
+    </div>
+
+    <div class="nav-buttons" id="navButtons">
+      <a href="page5.html" class="btn-nav btn-back">← Voltar</a>
+      <a href="index.html" class="btn-nav btn-next">Recomeçar 💕</a>
+    </div>
+
+  </main>
+
+  <script src="hearts.js"></script>
+  <script src="story.js"></script>
+  <script>
+    // Confetti ao revelar no finale
+    const originalReveal = window.reveal;
+    window.reveal = function() {
+      originalReveal && originalReveal();
+      launchConfetti();
+    };
+
+    function launchConfetti() {
+      const emojis = ['💖','🌸','✨','💕','🎉','🌹','💫','🎊','💝','🌷'];
+      for (let i = 0; i < 40; i++) {
+        setTimeout(() => {
+          const el = document.createElement('span');
+          el.className = 'confetti-piece';
+          el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+          el.style.left = Math.random() * 100 + 'vw';
+          const dur = 2.5 + Math.random() * 2.5;
+          el.style.animationDuration = dur + 's';
+          el.style.animationDelay   = (Math.random() * 1.5) + 's';
+          document.body.appendChild(el);
+          setTimeout(() => el.remove(), (dur + 2) * 1000);
+        }, i * 60);
+      }
+    }
+  </script>
+</body>
+</html>

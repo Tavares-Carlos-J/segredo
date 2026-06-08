@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>O Nascimento 👶</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+</head>
+<body class="story-page">
+
+  <div class="floating-hearts" id="floatingHearts"></div>
+
+  <main class="story-container">
+
+    <!-- Indicador de páginas -->
+    <div class="page-indicator">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <!-- Frase superior -->
+    <p class="phrase-top">01/08/09 nascia uma princesinha...</p>
+
+    <!-- Botão azul de revelar -->
+    <button class="btn-reveal" id="btnReveal" onclick="reveal()" title="Clique para revelar">
+      💙
+    </button>
+
+    <!-- Área revelada -->
+    <div class="reveal-area" id="revealArea">
+      <div class="photo-frame">
+        <img src="PastaA/Foto1.jpg" alt="Foto especial" />
+      </div>
+      <p class="phrase-reveal">...que veio para iluminar o mundo e, anos depois, a minha vida.</p>
+    </div>
+
+    <!-- Botões de navegação -->
+    <div class="nav-buttons" id="navButtons">
+      <a href="index.html" class="btn-nav btn-back">← Voltar</a>
+      <a href="page2.html" class="btn-nav btn-next">Avançar →</a>
+    </div>
+
+  </main>
+
+  <script src="hearts.js"></script>
+  <script src="story.js"></script>
+</body>
+</html>
